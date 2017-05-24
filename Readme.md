@@ -18,3 +18,4 @@
 --------------------
 - `crontab -e`
 - `* * * * * python KoreanArmy/Index.py MAC 서울 사회복무요원`
+- `brew install chromedriver`
