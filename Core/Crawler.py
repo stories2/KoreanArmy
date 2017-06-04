@@ -23,17 +23,21 @@ def CrawlArmyNoticeData():
     crawledData =[]
 
     chromeWebBrowser = webdriver.Chrome(DefineManager.CHROME_DEFAULT_BINARY_PATH)
-    chromeWebBrowser.get(DefineManager.CRAWL_TARGET_URL)
-    noticeList = chromeWebBrowser.find_element_by_xpath('//table//tbody')
-    noticeListDatas = noticeList.find_elements_by_xpath("tr")
+    try:
 
-    for eachNoticeData in noticeListDatas:
-        eachNoticeString = eachNoticeData.text
-        if eachNoticeString.find(DefineManager.SEARCH_DEFAULT_COUNTRY) != DefineManager.NOT_AVAILABLE \
-                and eachNoticeString.find(DefineManager.SEARCH_DEFAULT_KEYWORD) != DefineManager.NOT_AVAILABLE:
-            parsedEachNoticeData = GetNoticeParsedData(eachNoticeData)
-            crawledData.append(parsedEachNoticeData)
-            for indexOfNoticeData in parsedEachNoticeData:
-                print indexOfNoticeData
+        chromeWebBrowser.get(DefineManager.CRAWL_TARGET_URL)
+        noticeList = chromeWebBrowser.find_element_by_xpath('//table//tbody')
+        noticeListDatas = noticeList.find_elements_by_xpath("tr")
+
+        for eachNoticeData in noticeListDatas:
+            eachNoticeString = eachNoticeData.text
+            if eachNoticeString.find(DefineManager.SEARCH_DEFAULT_COUNTRY) != DefineManager.NOT_AVAILABLE \
+                    and eachNoticeString.find(DefineManager.SEARCH_DEFAULT_KEYWORD) != DefineManager.NOT_AVAILABLE:
+                parsedEachNoticeData = GetNoticeParsedData(eachNoticeData)
+                crawledData.append(parsedEachNoticeData)
+                for indexOfNoticeData in parsedEachNoticeData:
+                    print indexOfNoticeData
+    except:
+        print "Chrome browser error"
     chromeWebBrowser.quit()
     return crawledData
