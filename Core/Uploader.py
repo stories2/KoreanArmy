@@ -1,7 +1,7 @@
 import pymysql
 
 def UploadDataManager(crawledData):
-    databaseConnection = pymysql.connect(host='', user='', password='',
+    databaseConnection = pymysql.connect(host='stories3.iptime.org', user='KoreanArmy', password='toortoor%^%',
                        db='KoreanArmy', charset='utf8')
 
     for indexOfCrawledData in crawledData:

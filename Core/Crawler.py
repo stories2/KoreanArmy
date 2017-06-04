@@ -22,7 +22,7 @@ def CrawlArmyNoticeData():
 
     crawledData =[]
 
-    chromeWebBrowser = webdriver.Chrome(DefineManager.CHROME_DEFAULT_BINARY_PATH)
+    chromeWebBrowser = webdriver.Chrome()
     try:
 
         chromeWebBrowser.get(DefineManager.CRAWL_TARGET_URL)
